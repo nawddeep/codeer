@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   InnovateTech Solutions - Global Styles
+   Modern dark theme with glassmorphism and gradient accents
+   ========================================================================== */
+
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +23,20 @@ body {
   background: #0f172a;
   color: #f1f5f9;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: #fff;
 }
 
 ::-webkit-scrollbar {
@@ -161,5 +181,51 @@ body {
 @media (max-width: 768px) {
   .section-padding {
     padding: 60px 0;
+  }
+}
+
+/* ==========================================================================
+   Accessibility & Reduced Motion
+   ========================================================================== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #6366f1;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Touch-friendly targets (min 44px) */
+@media (pointer: coarse) {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
   }
 }
