@@ -1,4 +1,4 @@
-import { Code, Smartphone, Palette, TrendingUp, Cloud, Lightbulb, ArrowRight } from 'lucide-react';
+import { Code, Smartphone, Palette, TrendingUp, Cloud, Lightbulb, ArrowUpRight } from 'lucide-react';
 import { services } from '../data';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -13,30 +13,33 @@ const ServiceCard = ({ service, index }) => {
   return (
     <div
       ref={ref}
-      className={`glass-card rounded-2xl p-8 card-hover group transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      className={`group p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 card-hover transition-all duration-500 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-        <Icon className="w-7 h-7 text-white" />
+      {/* Icon */}
+      <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-500 to-blue-600 flex items-center justify-center mb-5">
+        <Icon className="w-5 h-5 text-white" />
       </div>
       
-      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{service.title}</h3>
-      <p className="text-slate-600 dark:text-slate-400 mb-6">{service.description}</p>
+      {/* Title with arrow */}
+      <div className="flex items-start justify-between mb-3">
+        <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">{service.title}</h3>
+        <ArrowUpRight className="w-4 h-4 text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+      </div>
       
-      <div className="flex flex-wrap gap-2 mb-6">
+      {/* Description */}
+      <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-5">{service.description}</p>
+      
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2">
         {service.features.map((feature, i) => (
-          <span key={i} className="px-3 py-1 text-xs rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/20">
+          <span key={i} className="px-2.5 py-1 text-xs rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
             {feature}
           </span>
         ))}
       </div>
-      
-      <a href="#contact" className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-medium group/link">
-        Learn More
-        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-      </a>
     </div>
   );
 };
@@ -45,26 +48,26 @@ const Services = () => {
   const [ref, isVisible] = useScrollAnimation();
 
   return (
-    <section id="services" className="section-padding relative">
-      <div className="absolute inset-0 bg-slate-50/50 dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-900/50 dark:to-slate-900 transition-colors duration-300" />
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-24 bg-zinc-50/50 dark:bg-transparent">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section header */}
         <div
           ref={ref}
-          className={`text-center mb-16 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`mb-16 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 block">What We Do</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Our <span className="gradient-text">Services</span>
+          <p className="text-violet-600 dark:text-violet-400 font-medium mb-3 text-sm tracking-wide uppercase">Services</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+            What we do best
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
-            We offer comprehensive digital solutions to help your business thrive in the modern world.
+          <p className="text-zinc-600 dark:text-zinc-400 max-w-lg">
+            End-to-end digital solutions tailored to your business needs.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}

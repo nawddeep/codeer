@@ -3,9 +3,8 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   Codeer - Global Styles
-   Modern theme with glassmorphism and gradient accents
-   Supports both dark and light modes
+   Codeer - Custom Design System
+   Unique, hand-crafted aesthetic - NOT a template
    ========================================================================== */
 
 /* Base Reset */
@@ -19,22 +18,22 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Theme transition for smooth switching */
+/* Theme transition */
 html.dark,
 html.light {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Dark Theme (Default) */
+/* Dark Theme */
 html.dark body {
-  background: #0f172a;
-  color: #f1f5f9;
+  background: #0a0a0f;
+  color: #e4e4e7;
 }
 
-/* Light Theme - Bright & Clean */
+/* Light Theme - Warm & Inviting */
 html.light body {
-  background: #ffffff;
-  color: #1e293b;
+  background: #fafaf9;
+  color: #18181b;
 }
 
 body {
@@ -154,34 +153,33 @@ html.light ::-webkit-scrollbar-thumb:hover {
 
 /* Glass Effects - Dark Mode */
 html.dark .glass {
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.1);
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 html.dark .glass-card {
-  background: rgba(30, 41, 59, 0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: linear-gradient(135deg, rgba(24, 24, 27, 0.8) 0%, rgba(39, 39, 42, 0.4) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Glass Effects - Light Mode (Brighter) */
+/* Glass Effects - Light Mode */
 html.light .glass {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 html.light .glass-card {
   background: #ffffff;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
 }
 
+/* Custom gradient text - unique color combo */
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 50%, #0891b2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -204,39 +202,60 @@ html.light .glass-card {
   mask-composite: exclude;
 }
 
+/* Primary button - bold gradient */
 .btn-primary {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #6d28d9 0%, #1d4ed8 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
 }
 
+/* Secondary button - minimal */
 .btn-secondary {
   background: transparent;
-  border: 1px solid rgba(99, 102, 241, 0.5);
-  transition: all 0.3s ease;
+  border: 1.5px solid currentColor;
+  opacity: 0.7;
+  transition: all 0.25s ease;
 }
 
 .btn-secondary:hover {
-  background: rgba(99, 102, 241, 0.1);
-  border-color: #6366f1;
+  opacity: 1;
+  background: rgba(124, 58, 237, 0.08);
 }
 
+/* Card hover - subtle lift */
 .card-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
 }
 
 html.dark .card-hover:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 html.light .card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(99, 102, 241, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .section-padding {

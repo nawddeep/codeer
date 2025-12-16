@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Play, ChevronDown } from 'lucide-react';
+import { ArrowRight, Play, ChevronDown, Zap } from 'lucide-react';
 import { companyInfo } from '../data';
 
 const Hero = () => {
@@ -15,7 +15,7 @@ const Hero = () => {
       } else {
         clearInterval(timer);
       }
-    }, 50);
+    }, 60);
     return () => clearInterval(timer);
   }, [fullText]);
 
@@ -24,108 +24,73 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen relative flex items-center overflow-hidden">
-      {/* Background - adapts to theme */}
-      <div className="absolute inset-0 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 transition-colors duration-300" />
+    <section id="home" className="min-h-screen relative flex items-center">
+      {/* Minimal background */}
+      <div className="absolute inset-0 bg-[#fafaf9] dark:bg-[#0a0a0f]" />
       
-      {/* Floating orbs - subtle in light mode */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-500/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/5 dark:bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '-1.5s' }} />
-      </div>
+      {/* Subtle accent blob */}
+      <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-violet-500/8 via-blue-500/5 to-transparent dark:from-violet-500/15 dark:via-blue-500/10 rounded-full blur-3xl" />
+      
+      <div className="relative max-w-6xl mx-auto px-6 py-32">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-8 rounded-full bg-violet-500/10 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 text-sm font-medium">
+          <Zap className="w-3.5 h-3.5" />
+          Now accepting projects for Q1 2025
+        </div>
 
-      {/* Dot grid pattern - very subtle in light mode */}
-      <div className="absolute inset-0 opacity-30 dark:opacity-100" style={{
-        backgroundImage: `radial-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px)`,
-        backgroundSize: '50px 50px'
-      }} />
+        {/* Main heading - large and bold */}
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6">
+          <span className="text-zinc-900 dark:text-zinc-100">We craft</span>
+          <br />
+          <span className="gradient-text">{typedText || 'digital'}</span>
+          <span className="text-violet-500 animate-pulse">_</span>
+        </h1>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-indigo-600 dark:text-indigo-300">
-              <span className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse" />
-              Available for new projects
+        {/* Subheading */}
+        <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 max-w-xl mb-10 leading-relaxed">
+          {companyInfo.description}
+        </p>
+
+        {/* CTA buttons */}
+        <div className="flex flex-wrap gap-4 mb-16">
+          <button
+            onClick={() => scrollToSection('#contact')}
+            className="btn-primary px-7 py-3.5 rounded-full text-white font-medium flex items-center gap-2 group relative z-10"
+          >
+            <span className="relative z-10">Start a project</span>
+            <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-0.5 transition-transform" />
+          </button>
+          <button
+            onClick={() => scrollToSection('#portfolio')}
+            className="btn-secondary px-7 py-3.5 rounded-full text-zinc-700 dark:text-zinc-300 font-medium flex items-center gap-2"
+          >
+            <Play className="w-4 h-4" />
+            See our work
+          </button>
+        </div>
+
+        {/* Stats - horizontal layout */}
+        <div className="flex flex-wrap gap-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+          {[
+            { value: '250+', label: 'Projects shipped' },
+            { value: '98%', label: 'Client satisfaction' },
+            { value: '6yrs', label: 'In business' },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">{stat.value}</div>
+              <div className="text-sm text-zinc-500 dark:text-zinc-500">{stat.label}</div>
             </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="text-slate-900 dark:text-white">We Build</span>
-              <br />
-              <span className="gradient-text">{typedText}</span>
-              <span className="text-indigo-500 animate-pulse">|</span>
-            </h1>
-
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl">
-              {companyInfo.description} Partner with us to create exceptional digital experiences that drive growth and innovation.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => scrollToSection('#contact')}
-                className="btn-primary px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2 group"
-              >
-                Start Your Project
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button
-                onClick={() => scrollToSection('#portfolio')}
-                className="btn-secondary px-8 py-4 rounded-full text-slate-900 dark:text-white font-semibold flex items-center gap-2"
-              >
-                <Play className="w-5 h-5" />
-                View Our Work
-              </button>
-            </div>
-
-            <div className="flex items-center gap-8 pt-4">
-              <div>
-                <div className="text-3xl font-bold text-slate-900 dark:text-white">250+</div>
-                <div className="text-sm text-slate-500 dark:text-slate-400">Projects Delivered</div>
-              </div>
-              <div className="w-px h-12 bg-slate-300 dark:bg-slate-700" />
-              <div>
-                <div className="text-3xl font-bold text-slate-900 dark:text-white">98%</div>
-                <div className="text-sm text-slate-500 dark:text-slate-400">Client Satisfaction</div>
-              </div>
-              <div className="w-px h-12 bg-slate-300 dark:bg-slate-700" />
-              <div>
-                <div className="text-3xl font-bold text-slate-900 dark:text-white">6+</div>
-                <div className="text-sm text-slate-500 dark:text-slate-400">Years Experience</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative hidden lg:block">
-            <div className="relative w-full aspect-square">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl animate-pulse-glow" />
-              <div className="absolute inset-4 glass-card rounded-2xl p-8 flex items-center justify-center">
-                <div className="grid grid-cols-3 gap-4 w-full">
-                  {[...Array(9)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="aspect-square rounded-xl bg-gradient-to-br from-indigo-500/30 to-purple-500/30 animate-float"
-                      style={{ animationDelay: `${i * 0.2}s` }}
-                    />
-                  ))}
-                </div>
-              </div>
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center animate-float shadow-lg shadow-cyan-500/30">
-                <span className="text-3xl font-bold text-white">AI</span>
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center animate-float shadow-lg shadow-purple-500/30" style={{ animationDelay: '-2s' }}>
-                <span className="text-2xl font-bold text-white">UX</span>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
+      {/* Scroll indicator */}
       <button
         onClick={() => scrollToSection('#services')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
         aria-label="Scroll down"
       >
-        <ChevronDown className="w-8 h-8" />
+        <ChevronDown className="w-6 h-6 animate-bounce" />
       </button>
     </section>
   );

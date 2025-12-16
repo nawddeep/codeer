@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { projects } from '../data';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -11,41 +11,38 @@ const ProjectCard = ({ project, index }) => {
   return (
     <div
       ref={ref}
-      className={`group relative overflow-hidden rounded-2xl glass-card card-hover transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      className={`group cursor-pointer transition-all duration-500 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <div className="aspect-video overflow-hidden">
+      {/* Image */}
+      <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-zinc-100 dark:bg-zinc-800">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="flex gap-2">
+            {project.technologies.slice(0, 3).map((tech, i) => (
+              <span key={i} className="px-2 py-1 text-xs rounded bg-white/20 text-white backdrop-blur-sm">
+                {tech}
+              </span>
+            ))}
+          </div>
+          <ArrowUpRight className="w-5 h-5 text-white" />
+        </div>
       </div>
       
-      <div className="absolute inset-0 p-6 flex flex-col justify-end">
-        <span className="text-indigo-400 text-sm font-medium mb-2">{project.category}</span>
-        <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-        <p className="text-slate-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          {project.description}
-        </p>
-        
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech, i) => (
-            <span key={i} className="px-2 py-1 text-xs rounded-full bg-white/10 text-white">
-              {tech}
-            </span>
-          ))}
-        </div>
-        
-        <button className="inline-flex items-center gap-2 text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:text-indigo-400">
-          View Case Study
-          <ExternalLink className="w-4 h-4" />
-        </button>
-      </div>
+      {/* Info */}
+      <span className="text-xs font-medium text-violet-600 dark:text-violet-400 uppercase tracking-wide">{project.category}</span>
+      <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mt-1 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+        {project.title}
+      </h3>
+      <p className="text-sm text-zinc-500 mt-1 line-clamp-2">{project.description}</p>
     </div>
   );
 };
@@ -59,41 +56,41 @@ const Portfolio = () => {
     : projects.filter(p => p.category === activeCategory);
 
   return (
-    <section id="portfolio" className="section-padding relative">
-      <div className="absolute inset-0 bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-indigo-950/30 dark:to-slate-900 transition-colors duration-300" />
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="py-24 bg-zinc-50/50 dark:bg-transparent">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
         <div
           ref={ref}
-          className={`text-center mb-12 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 block">Our Work</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
-            Explore our portfolio of successful projects that have helped businesses achieve their goals.
-          </p>
+          <div>
+            <p className="text-violet-600 dark:text-violet-400 font-medium mb-3 text-sm tracking-wide uppercase">Portfolio</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-zinc-100">
+              Selected work
+            </h2>
+          </div>
+          
+          {/* Filter tabs */}
+          <div className="flex gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all ${
+                  activeCategory === category
+                    ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="flex justify-center gap-4 mb-12 flex-wrap">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white'
-                  : 'glass-card text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
+        {/* Projects grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />

@@ -1,61 +1,51 @@
 import { technologies } from '../data';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const categoryColors = {
-  Frontend: 'from-blue-500 to-cyan-500',
-  Backend: 'from-green-500 to-emerald-500',
-  Database: 'from-orange-500 to-amber-500',
-  Mobile: 'from-purple-500 to-pink-500',
-  Cloud: 'from-indigo-500 to-violet-500',
-  Design: 'from-rose-500 to-red-500'
-};
-
-const TechCard = ({ tech, index }) => {
-  const [ref, isVisible] = useScrollAnimation(0.1);
-
-  return (
-    <div
-      ref={ref}
-      className={`glass-card rounded-xl p-4 text-center card-hover group transition-all duration-500 ${
-        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-      }`}
-      style={{ transitionDelay: `${index * 50}ms` }}
-    >
-      <div className={`w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br ${categoryColors[tech.category]} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-        <span className="text-white font-bold text-lg">{tech.name.charAt(0)}</span>
-      </div>
-      <div className="text-slate-900 dark:text-white font-medium text-sm">{tech.name}</div>
-      <div className="text-slate-500 text-xs mt-1">{tech.category}</div>
-    </div>
-  );
-};
-
 const Technologies = () => {
   const [ref, isVisible] = useScrollAnimation();
 
+  // Group by category
+  const grouped = technologies.reduce((acc, tech) => {
+    if (!acc[tech.category]) acc[tech.category] = [];
+    acc[tech.category].push(tech.name);
+    return acc;
+  }, {});
+
   return (
-    <section className="section-padding relative">
-      <div className="absolute inset-0 bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-900/50 transition-colors duration-300" />
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
         <div
           ref={ref}
-          className={`text-center mb-16 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`mb-12 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 block">Tech Stack</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Technologies <span className="gradient-text">We Use</span>
+          <p className="text-violet-600 dark:text-violet-400 font-medium mb-3 text-sm tracking-wide uppercase">Tech Stack</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+            Tools we use
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
-            We leverage the latest technologies to build scalable, performant solutions.
+          <p className="text-zinc-600 dark:text-zinc-400 max-w-lg">
+            Modern technologies for scalable, performant solutions.
           </p>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-          {technologies.map((tech, index) => (
-            <TechCard key={tech.name} tech={tech} index={index} />
+        {/* Tech categories */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Object.entries(grouped).map(([category, techs]) => (
+            <div key={category}>
+              <h3 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-4">{category}</h3>
+              <div className="flex flex-wrap gap-2">
+                {techs.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 text-sm rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

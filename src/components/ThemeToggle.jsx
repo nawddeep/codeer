@@ -1,8 +1,3 @@
-/**
- * Theme Toggle Button
- * Animated sun/moon toggle with smooth transitions
- */
-
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -12,30 +7,14 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-10 h-10 rounded-xl bg-slate-800/50 dark:bg-slate-800/50 light:bg-white/50 
-                 border border-slate-700/50 dark:border-slate-700/50 
-                 flex items-center justify-center
-                 hover:border-indigo-500/50 hover:bg-indigo-500/10
-                 transition-all duration-300 group overflow-hidden"
+      className="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      <div className="relative w-5 h-5">
-        {/* Sun icon */}
-        <Sun 
-          className={`absolute inset-0 w-5 h-5 text-amber-400 transition-all duration-500 
-            ${isDark ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'}`}
-        />
-        {/* Moon icon */}
-        <Moon 
-          className={`absolute inset-0 w-5 h-5 text-indigo-400 transition-all duration-500
-            ${isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'}`}
-        />
-      </div>
-      
-      {/* Glow effect on hover */}
-      <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300
-        ${isDark ? 'bg-indigo-500/10' : 'bg-amber-500/10'}`} 
-      />
+      {isDark ? (
+        <Sun className="w-4 h-4" />
+      ) : (
+        <Moon className="w-4 h-4" />
+      )}
     </button>
   );
 };
