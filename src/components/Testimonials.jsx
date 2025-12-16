@@ -19,8 +19,8 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="section-padding relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-950/20 to-slate-900" />
-      <div className="absolute top-1/2 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-indigo-50/20 to-slate-50 dark:from-slate-900 dark:via-indigo-950/20 dark:to-slate-900 transition-colors duration-300" />
+      <div className="absolute top-1/2 right-0 w-80 h-80 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -29,8 +29,8 @@ const Testimonials = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <span className="text-indigo-400 font-medium mb-4 block">Testimonials</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 block">Testimonials</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             What Our <span className="gradient-text">Clients Say</span>
           </h2>
         </div>
@@ -55,7 +55,7 @@ const Testimonials = () => {
                     ))}
                   </div>
                   
-                  <p className="text-xl sm:text-2xl text-slate-300 text-center mb-8 leading-relaxed">
+                  <p className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 text-center mb-8 leading-relaxed">
                     "{testimonial.text}"
                   </p>
                   
@@ -67,8 +67,8 @@ const Testimonials = () => {
                       loading="lazy"
                     />
                     <div>
-                      <div className="font-semibold text-white">{testimonial.name}</div>
-                      <div className="text-slate-400 text-sm">
+                      <div className="font-semibold text-slate-900 dark:text-white">{testimonial.name}</div>
+                      <div className="text-slate-500 dark:text-slate-400 text-sm">
                         {testimonial.title} at {testimonial.company}
                       </div>
                     </div>
@@ -80,7 +80,7 @@ const Testimonials = () => {
             <div className="flex justify-center items-center gap-4 mt-8">
               <button
                 onClick={prev}
-                className="w-10 h-10 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                className="w-10 h-10 rounded-full glass flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -92,7 +92,7 @@ const Testimonials = () => {
                     key={index}
                     onClick={() => setCurrent(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === current ? 'w-8 bg-indigo-500' : 'bg-slate-600 hover:bg-slate-500'
+                      index === current ? 'w-8 bg-indigo-500' : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -101,7 +101,7 @@ const Testimonials = () => {
               
               <button
                 onClick={next}
-                className="w-10 h-10 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                className="w-10 h-10 rounded-full glass flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-5 h-5" />

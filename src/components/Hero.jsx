@@ -25,35 +25,38 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen relative flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" />
+      {/* Background - adapts to theme */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-indigo-50 to-slate-100 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 transition-colors duration-300" />
       
+      {/* Floating orbs */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '-1.5s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '-1.5s' }} />
       </div>
 
-      <div className="absolute inset-0" style={{
-        backgroundImage: `radial-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px)`,
+      {/* Dot grid pattern */}
+      <div className="absolute inset-0 opacity-50 dark:opacity-100" style={{
+        backgroundImage: `radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px)`,
         backgroundSize: '50px 50px'
       }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-indigo-300">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-indigo-600 dark:text-indigo-300">
+              <span className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse" />
               Available for new projects
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="text-white">We Build</span>
+              <span className="text-slate-900 dark:text-white">We Build</span>
               <br />
               <span className="gradient-text">{typedText}</span>
-              <span className="animate-pulse">|</span>
+              <span className="text-indigo-500 animate-pulse">|</span>
             </h1>
 
-            <p className="text-lg text-slate-400 max-w-xl">
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl">
               {companyInfo.description} Partner with us to create exceptional digital experiences that drive growth and innovation.
             </p>
 
@@ -67,7 +70,7 @@ const Hero = () => {
               </button>
               <button
                 onClick={() => scrollToSection('#portfolio')}
-                className="btn-secondary px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2"
+                className="btn-secondary px-8 py-4 rounded-full text-slate-900 dark:text-white font-semibold flex items-center gap-2"
               >
                 <Play className="w-5 h-5" />
                 View Our Work
@@ -76,18 +79,18 @@ const Hero = () => {
 
             <div className="flex items-center gap-8 pt-4">
               <div>
-                <div className="text-3xl font-bold text-white">250+</div>
-                <div className="text-sm text-slate-400">Projects Delivered</div>
+                <div className="text-3xl font-bold text-slate-900 dark:text-white">250+</div>
+                <div className="text-sm text-slate-500 dark:text-slate-400">Projects Delivered</div>
               </div>
-              <div className="w-px h-12 bg-slate-700" />
+              <div className="w-px h-12 bg-slate-300 dark:bg-slate-700" />
               <div>
-                <div className="text-3xl font-bold text-white">98%</div>
-                <div className="text-sm text-slate-400">Client Satisfaction</div>
+                <div className="text-3xl font-bold text-slate-900 dark:text-white">98%</div>
+                <div className="text-sm text-slate-500 dark:text-slate-400">Client Satisfaction</div>
               </div>
-              <div className="w-px h-12 bg-slate-700" />
+              <div className="w-px h-12 bg-slate-300 dark:bg-slate-700" />
               <div>
-                <div className="text-3xl font-bold text-white">6+</div>
-                <div className="text-sm text-slate-400">Years Experience</div>
+                <div className="text-3xl font-bold text-slate-900 dark:text-white">6+</div>
+                <div className="text-sm text-slate-500 dark:text-slate-400">Years Experience</div>
               </div>
             </div>
           </div>
@@ -119,7 +122,7 @@ const Hero = () => {
 
       <button
         onClick={() => scrollToSection('#services')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 hover:text-white transition-colors animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors animate-bounce"
         aria-label="Scroll down"
       >
         <ChevronDown className="w-8 h-8" />

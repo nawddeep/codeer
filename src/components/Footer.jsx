@@ -16,8 +16,8 @@ const Footer = () => {
   const quickLinks = navLinks.filter(l => l.name !== 'Home');
 
   return (
-    <footer className="relative bg-slate-950 pt-20 pb-8">
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-slate-900/50" />
+    <footer className="relative bg-slate-100 dark:bg-slate-950 pt-20 pb-8 transition-colors duration-300">
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-200 to-slate-100/50 dark:from-slate-950 dark:to-slate-900/50" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -28,14 +28,14 @@ const Footer = () => {
               </div>
               <span className="text-xl font-bold gradient-text">{companyInfo.name.split(' ')[0]}</span>
             </a>
-            <p className="text-slate-400 mb-6 max-w-md">
+            <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-md">
               {companyInfo.tagline}. {companyInfo.description}
             </p>
             <div className="flex gap-4">
               {socialLinks.map(({ icon: Icon, href }, i) => (
                 <a
                   key={i} href={href} target="_blank" rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-indigo-500 transition-all"
+                  className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-white hover:bg-indigo-500 transition-all"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -44,11 +44,11 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-6">Quick Links</h4>
+            <h4 className="text-slate-900 dark:text-white font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-slate-400 hover:text-white transition-colors">
+                  <a href={link.href} className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                     {link.name}
                   </a>
                 </li>
@@ -57,8 +57,8 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-6">Contact</h4>
-            <ul className="space-y-3 text-slate-400">
+            <h4 className="text-slate-900 dark:text-white font-semibold mb-6">Contact</h4>
+            <ul className="space-y-3 text-slate-600 dark:text-slate-400">
               <li>{companyInfo.email}</li>
               <li>{companyInfo.phone}</li>
               <li>{companyInfo.address}</li>
@@ -66,13 +66,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="border-t border-slate-300 dark:border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} {companyInfo.name}. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-slate-500">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-900 dark:hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

@@ -27,10 +27,10 @@ const ProcessStep = ({ step, index, isLast }) => {
       
       <div className="pb-12">
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-indigo-400 font-bold text-sm">Step {step.number}</span>
+          <span className="text-indigo-600 dark:text-indigo-400 font-bold text-sm">Step {step.number}</span>
         </div>
-        <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-        <p className="text-slate-400">{step.description}</p>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{step.title}</h3>
+        <p className="text-slate-600 dark:text-slate-400">{step.description}</p>
       </div>
     </div>
   );
@@ -41,7 +41,7 @@ const Process = () => {
 
   return (
     <section className="section-padding relative overflow-hidden">
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl -translate-y-1/2" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-3xl -translate-y-1/2" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -50,11 +50,11 @@ const Process = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <span className="text-indigo-400 font-medium mb-4 block">How We Work</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 block">How We Work</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Our <span className="gradient-text">Process</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
             A proven methodology that ensures successful project delivery every time.
           </p>
         </div>

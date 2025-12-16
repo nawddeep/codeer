@@ -24,7 +24,7 @@ const TechCard = ({ tech, index }) => {
       <div className={`w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br ${categoryColors[tech.category]} flex items-center justify-center group-hover:scale-110 transition-transform`}>
         <span className="text-white font-bold text-lg">{tech.name.charAt(0)}</span>
       </div>
-      <div className="text-white font-medium text-sm">{tech.name}</div>
+      <div className="text-slate-900 dark:text-white font-medium text-sm">{tech.name}</div>
       <div className="text-slate-500 text-xs mt-1">{tech.category}</div>
     </div>
   );
@@ -35,7 +35,7 @@ const Technologies = () => {
 
   return (
     <section className="section-padding relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-900/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900/50 transition-colors duration-300" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -44,11 +44,11 @@ const Technologies = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <span className="text-indigo-400 font-medium mb-4 block">Tech Stack</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 block">Tech Stack</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Technologies <span className="gradient-text">We Use</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
             We leverage the latest technologies to build scalable, performant solutions.
           </p>
         </div>

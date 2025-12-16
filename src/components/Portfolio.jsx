@@ -60,7 +60,7 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio" className="section-padding relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-950/30 to-slate-900" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-indigo-50/30 to-slate-50 dark:from-slate-900 dark:via-indigo-950/30 dark:to-slate-900 transition-colors duration-300" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -69,11 +69,11 @@ const Portfolio = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <span className="text-indigo-400 font-medium mb-4 block">Our Work</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 block">Our Work</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
             Explore our portfolio of successful projects that have helped businesses achieve their goals.
           </p>
         </div>
@@ -86,7 +86,7 @@ const Portfolio = () => {
               className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                 activeCategory === category
                   ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white'
-                  : 'glass-card text-slate-300 hover:text-white'
+                  : 'glass-card text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               {category}

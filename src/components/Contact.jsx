@@ -102,7 +102,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section-padding relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/50 to-slate-900" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900/50 dark:to-slate-900 transition-colors duration-300" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -111,11 +111,11 @@ const Contact = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <span className="text-indigo-400 font-medium mb-4 block">Contact Us</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 block">Contact Us</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Get In <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
             Have a project in mind? Let's discuss how we can help bring your ideas to life.
           </p>
         </div>
@@ -127,19 +127,19 @@ const Contact = () => {
                 <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
                   <CheckCircle className="w-8 h-8 text-green-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-slate-400">We'll get back to you within 24 hours.</p>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Message Sent!</h3>
+                <p className="text-slate-600 dark:text-slate-400">We'll get back to you within 24 hours.</p>
               </div>
             ) : submitStatus === 'error' ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
                   <AlertCircle className="w-8 h-8 text-red-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Something went wrong</h3>
-                <p className="text-slate-400 mb-4">Please try again or email us directly.</p>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Something went wrong</h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-4">Please try again or email us directly.</p>
                 <button
                   onClick={() => setSubmitStatus(null)}
-                  className="text-indigo-400 hover:text-indigo-300 font-medium"
+                  className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-medium"
                 >
                   Try Again
                 </button>
@@ -148,39 +148,39 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">Name *</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Name *</label>
                     <input
                       type="text" id="name" name="name" value={formData.name} onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-800/50 border ${errors.name ? 'border-red-500' : 'border-slate-700'} text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors`}
+                      className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/50 border ${errors.name ? 'border-red-500' : 'border-slate-300 dark:border-slate-700'} text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors`}
                       placeholder="John Doe"
                     />
-                    {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
+                    {errors.name && <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.name}</p>}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">Email *</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email *</label>
                     <input
                       type="email" id="email" name="email" value={formData.email} onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-800/50 border ${errors.email ? 'border-red-500' : 'border-slate-700'} text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors`}
+                      className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/50 border ${errors.email ? 'border-red-500' : 'border-slate-300 dark:border-slate-700'} text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors`}
                       placeholder="john@example.com"
                     />
-                    {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
+                    {errors.email && <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.email}</p>}
                   </div>
                 </div>
                 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-slate-300 mb-2">Phone</label>
+                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Phone</label>
                     <input
                       type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-slate-300 mb-2">Service</label>
+                    <label htmlFor="service" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Service</label>
                     <select
                       id="service" name="service" value={formData.service} onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 transition-colors"
                     >
                       <option value="">Select a service</option>
                       {services.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
@@ -189,13 +189,13 @@ const Contact = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">Message *</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message *</label>
                   <textarea
                     id="message" name="message" value={formData.message} onChange={handleChange} rows={5}
-                    className={`w-full px-4 py-3 rounded-xl bg-slate-800/50 border ${errors.message ? 'border-red-500' : 'border-slate-700'} text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors resize-none`}
+                    className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/50 border ${errors.message ? 'border-red-500' : 'border-slate-300 dark:border-slate-700'} text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors resize-none`}
                     placeholder="Tell us about your project..."
                   />
-                  {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
+                  {errors.message && <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.message}</p>}
                 </div>
                 
                 <button
@@ -214,20 +214,20 @@ const Contact = () => {
 
           <div className="space-y-8">
             <div className="glass-card rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-white mb-6">Contact Information</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Contact Information</h3>
               <div className="space-y-6">
-                <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group">
+                <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-4 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors group">
                   <div className="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center group-hover:bg-indigo-500/30 transition-colors">
-                    <Mail className="w-5 h-5 text-indigo-400" />
+                    <Mail className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
                   </div>
                   <div>
                     <div className="text-sm text-slate-500">Email</div>
                     <div>{companyInfo.email}</div>
                   </div>
                 </a>
-                <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group">
+                <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-4 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors group">
                   <div className="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center group-hover:bg-indigo-500/30 transition-colors">
-                    <Phone className="w-5 h-5 text-indigo-400" />
+                    <Phone className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
                   </div>
                   <div>
                     <div className="text-sm text-slate-500">Phone</div>

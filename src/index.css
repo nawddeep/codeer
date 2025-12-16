@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   InnovateTech Solutions - Global Styles
-   Modern dark theme with glassmorphism and gradient accents
+   Codeer - Global Styles
+   Modern theme with glassmorphism and gradient accents
+   Supports both dark and light modes
    ========================================================================== */
 
 /* Base Reset */
@@ -18,13 +19,30 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+/* Theme transition for smooth switching */
+html.dark,
+html.light {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Theme (Default) */
+html.dark body {
   background: #0f172a;
   color: #f1f5f9;
+}
+
+/* Light Theme */
+html.light body {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+  color: #0f172a;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 /* Focus styles for accessibility */
@@ -36,23 +54,49 @@ body {
 /* Selection styling */
 ::selection {
   background: rgba(99, 102, 241, 0.3);
+}
+
+html.dark ::selection {
   color: #fff;
 }
 
-::-webkit-scrollbar {
+html.light ::selection {
+  color: #0f172a;
+}
+
+/* Scrollbar - Dark */
+html.dark ::-webkit-scrollbar {
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
+html.dark ::-webkit-scrollbar-track {
   background: #1e293b;
 }
 
-::-webkit-scrollbar-thumb {
+html.dark ::-webkit-scrollbar-thumb {
   background: #6366f1;
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+/* Scrollbar - Light */
+html.light ::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 4px;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
   background: #8b5cf6;
 }
 
@@ -108,16 +152,32 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.glass {
+/* Glass Effects - Dark Mode */
+html.dark .glass {
   background: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
-.glass-card {
+html.dark .glass-card {
   background: rgba(30, 41, 59, 0.5);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* Glass Effects - Light Mode */
+html.light .glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 30px rgba(99, 102, 241, 0.08);
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
 }
 
 .gradient-text {
@@ -169,9 +229,14 @@ body {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card-hover:hover {
+html.dark .card-hover:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+html.light .card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
 }
 
 .section-padding {
