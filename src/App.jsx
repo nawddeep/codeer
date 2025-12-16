@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import SEO from './components/SEO';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -62,6 +63,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-900">
+      {/* SEO Meta Tags */}
+      <SEO />
+      
       {/* Skip link for keyboard accessibility */}
       <a href="#main-content" className="skip-link">
         Skip to main content

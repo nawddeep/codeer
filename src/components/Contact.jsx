@@ -1,23 +1,46 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Linkedin, Twitter, Instagram, Github, CheckCircle, Loader2 } from 'lucide-react';
+/**
+ * Contact Section Component
+ * Features EmailJS integration for real form submissions
+ * 
+ * To enable EmailJS:
+ * 1. Create account at https://www.emailjs.com/
+ * 2. Create email service and template
+ * 3. Add your credentials to .env file:
+ *    VITE_EMAILJS_SERVICE_ID=your_service_id
+ *    VITE_EMAILJS_TEMPLATE_ID=your_template_id
+ *    VITE_EMAILJS_PUBLIC_KEY=your_public_key
+ */
+
+import { useState, useRef } from 'react';
+import { Mail, Phone, MapPin, Send, Linkedin, Twitter, Instagram, Github, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { companyInfo, services } from '../data';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
+// EmailJS configuration - replace with your credentials or use env variables
+const EMAILJS_CONFIG = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'demo_service',
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'demo_template',
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'demo_key'
+};
+
 const Contact = () => {
+  const formRef = useRef(null);
   const [ref, isVisible] = useScrollAnimation();
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', service: '', message: ''
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
   const validate = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Please enter a valid email';
     if (!formData.message.trim()) newErrors.message = 'Message is required';
+    else if (formData.message.trim().length < 10) newErrors.message = 'Message must be at least 10 characters';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -27,11 +50,41 @@ const Contact = () => {
     if (!validate()) return;
     
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setSubmitStatus(null);
+
+    try {
+      // Check if EmailJS is configured (not demo values)
+      if (EMAILJS_CONFIG.serviceId !== 'demo_service') {
+        await emailjs.send(
+          EMAILJS_CONFIG.serviceId,
+          EMAILJS_CONFIG.templateId,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            phone: formData.phone || 'Not provided',
+            service: formData.service || 'Not specified',
+            message: formData.message,
+            to_name: companyInfo.name
+          },
+          EMAILJS_CONFIG.publicKey
+        );
+      } else {
+        // Demo mode - simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        console.log('Demo mode: Form data would be sent:', formData);
+      }
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } catch (error) {
+      console.error('Email send failed:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -69,13 +122,27 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="glass-card rounded-2xl p-8">
-            {isSubmitted ? (
+            {submitStatus === 'success' ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
                   <CheckCircle className="w-8 h-8 text-green-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
                 <p className="text-slate-400">We'll get back to you within 24 hours.</p>
+              </div>
+            ) : submitStatus === 'error' ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-12">
+                <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
+                  <AlertCircle className="w-8 h-8 text-red-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Something went wrong</h3>
+                <p className="text-slate-400 mb-4">Please try again or email us directly.</p>
+                <button
+                  onClick={() => setSubmitStatus(null)}
+                  className="text-indigo-400 hover:text-indigo-300 font-medium"
+                >
+                  Try Again
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">

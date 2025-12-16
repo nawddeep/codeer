@@ -1,0 +1,10 @@
+# Robots.txt for InnovateTech Solutions
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://innovatetech.com/sitemap.xml
+
+# Disallow admin/private areas (if any)
+Disallow: /admin/
+Disallow: /api/

@@ -1,10 +1,21 @@
+/**
+ * InnovateTech Solutions - Entry Point
+ * Wraps app with providers for SEO and error handling
+ */
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { HelmetProvider } from 'react-helmet-async'
+import ErrorBoundary from './components/ErrorBoundary'
 import './index.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <ErrorBoundary>
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    </ErrorBoundary>
   </StrictMode>,
 )
