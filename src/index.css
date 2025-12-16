@@ -31,10 +31,10 @@ html.dark body {
   color: #f1f5f9;
 }
 
-/* Light Theme */
+/* Light Theme - Bright & Clean */
 html.light body {
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
-  color: #0f172a;
+  background: #ffffff;
+  color: #1e293b;
 }
 
 body {
@@ -165,19 +165,19 @@ html.dark .glass-card {
   border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
-/* Glass Effects - Light Mode */
+/* Glass Effects - Light Mode (Brighter) */
 html.light .glass {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.15);
-  box-shadow: 0 4px 30px rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 html.light .glass-card {
-  background: rgba(255, 255, 255, 0.7);
+  background: #ffffff;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .gradient-text {
@@ -235,8 +235,8 @@ html.dark .card-hover:hover {
 }
 
 html.light .card-hover:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(99, 102, 241, 0.12);
 }
 
 .section-padding {

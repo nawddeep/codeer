@@ -19,7 +19,7 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="section-padding relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-indigo-50/20 to-slate-50 dark:from-slate-900 dark:via-indigo-950/20 dark:to-slate-900 transition-colors duration-300" />
+      <div className="absolute inset-0 bg-slate-50/50 dark:bg-gradient-to-b dark:from-slate-900 dark:via-indigo-950/20 dark:to-slate-900 transition-colors duration-300" />
       <div className="absolute top-1/2 right-0 w-80 h-80 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

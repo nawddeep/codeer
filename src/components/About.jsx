@@ -35,8 +35,8 @@ const About = () => {
 
   return (
     <section id="about" className="section-padding relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/[0.03] dark:bg-indigo-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/[0.03] dark:bg-purple-500/10 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">

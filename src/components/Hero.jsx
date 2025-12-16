@@ -26,18 +26,18 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen relative flex items-center overflow-hidden">
       {/* Background - adapts to theme */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-indigo-50 to-slate-100 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 transition-colors duration-300" />
+      <div className="absolute inset-0 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 transition-colors duration-300" />
       
-      {/* Floating orbs */}
+      {/* Floating orbs - subtle in light mode */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-500/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/5 dark:bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
         <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '-1.5s' }} />
       </div>
 
-      {/* Dot grid pattern */}
-      <div className="absolute inset-0 opacity-50 dark:opacity-100" style={{
-        backgroundImage: `radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px)`,
+      {/* Dot grid pattern - very subtle in light mode */}
+      <div className="absolute inset-0 opacity-30 dark:opacity-100" style={{
+        backgroundImage: `radial-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px)`,
         backgroundSize: '50px 50px'
       }} />
 

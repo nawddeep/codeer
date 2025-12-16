@@ -16,8 +16,8 @@ const Footer = () => {
   const quickLinks = navLinks.filter(l => l.name !== 'Home');
 
   return (
-    <footer className="relative bg-slate-100 dark:bg-slate-950 pt-20 pb-8 transition-colors duration-300">
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-200 to-slate-100/50 dark:from-slate-950 dark:to-slate-900/50" />
+    <footer className="relative bg-slate-50 dark:bg-slate-950 pt-20 pb-8 transition-colors duration-300">
+      <div className="absolute inset-0 bg-slate-50 dark:bg-gradient-to-t dark:from-slate-950 dark:to-slate-900/50" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">

@@ -46,7 +46,7 @@ const Services = () => {
 
   return (
     <section id="services" className="section-padding relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900/50 dark:to-slate-900 transition-colors duration-300" />
+      <div className="absolute inset-0 bg-slate-50/50 dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-900/50 dark:to-slate-900 transition-colors duration-300" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div

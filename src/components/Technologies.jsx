@@ -35,7 +35,7 @@ const Technologies = () => {
 
   return (
     <section className="section-padding relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900/50 transition-colors duration-300" />
+      <div className="absolute inset-0 bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-900/50 transition-colors duration-300" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
