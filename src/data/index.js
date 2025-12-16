@@ -1,16 +1,16 @@
 export const companyInfo = {
-  name: "InnovateTech Solutions",
+  name: "Codeer",
   tagline: "Transforming Ideas into Digital Reality",
   description: "We are a full-service digital agency specializing in web development, mobile apps, and innovative digital solutions.",
-  email: "hello@innovatetech.com",
+  email: "hello@codeer.dev",
   phone: "+1 (555) 123-4567",
   address: "123 Tech Street, Innovation City, CA 94000",
   founded: 2018,
   social: {
-    linkedin: "https://linkedin.com/company/innovatetech",
-    twitter: "https://twitter.com/innovatetech",
-    instagram: "https://instagram.com/innovatetech",
-    github: "https://github.com/innovatetech"
+    linkedin: "https://linkedin.com/company/codeer",
+    twitter: "https://twitter.com/codeer",
+    instagram: "https://instagram.com/codeer",
+    github: "https://github.com/nawddeep/codeer"
   }
 };
 
@@ -118,7 +118,7 @@ export const testimonials = [
     company: "TechStart Inc.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
     rating: 5,
-    text: "Working with InnovateTech was a game-changer for our business. They delivered a stunning website that increased our conversions by 300%. Their attention to detail and commitment to excellence is unmatched."
+    text: "Working with Codeer was a game-changer for our business. They delivered a stunning website that increased our conversions by 300%. Their attention to detail and commitment to excellence is unmatched."
   },
   {
     id: 2,

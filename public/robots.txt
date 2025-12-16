@@ -1,9 +1,9 @@
-# Robots.txt for InnovateTech Solutions
+# Robots.txt for Codeer
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://innovatetech.com/sitemap.xml
+Sitemap: https://codeer.dev/sitemap.xml
 
 # Disallow admin/private areas (if any)
 Disallow: /admin/

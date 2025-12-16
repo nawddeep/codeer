@@ -10,7 +10,7 @@ const SEO = ({
   title = `${companyInfo.name} | Digital Agency`,
   description = companyInfo.description,
   image = '/og-image.jpg',
-  url = 'https://innovatetech.com',
+  url = 'https://codeer.dev',
   type = 'website'
 }) => {
   const structuredData = {
@@ -73,7 +73,7 @@ const SEO = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      <meta name="twitter:creator" content="@innovatetech" />
+      <meta name="twitter:creator" content="@codeer" />
 
       {/* Additional Meta */}
       <meta name="theme-color" content="#0f172a" />

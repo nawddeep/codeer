@@ -1,4 +1,4 @@
-# InnovateTech Solutions
+# Codeer
 
 A modern, professional full-service digital agency website built with React, Tailwind CSS, and Lucide React.
 
